@@ -8,7 +8,7 @@
     <script src="Content/Scripts/Libs/jquery.layout.js"></script>
     <script src="Content/Scripts/Libs/highcharts.js"></script>
     <script src="Content/Scripts/Libs/customEvents.js"></script>
-
+<link href="Content/Styles/tablestyle.css" rel="stylesheet" />
     <script type="text/javascript">
 
         function getParameterByName(name) {
@@ -20,17 +20,9 @@
 
 
         $(document).ready(function () {
-            $('body').layout({ applyDefaultStyles: true });
+            $('body').layout({ applyDefaultStyles: true, size: "auto" });
 
             
-            //codepedia.info/2015/07/highcharts-asp-net-create-pie-chart-with-jquery-ajax-in-c-sharp-ms-sql-database/
-            //www.tutorialized.com/tutorial/Charts-and-graphs-using-jquery-and-charting-library-the-HighCharts/67976
-            //jsfiddle.net/gh/get/jquery/1.7.2/highslide-software/highcharts.com/tree/master/samples/highcharts/plotoptions/series-point-events-click/
-            //$('.rcorners').toggle(function () {
-            //    $(".rcorners").addClass("active");
-            //}, function () {
-            //    $(".rcorners").removeClass("active");
-            //});
             //var centerid = "001";
             var centerid = getParameterByName("cid");
             $(".rcorners").click(function () {
@@ -73,11 +65,18 @@
                     //alert(Result.d.UserName);
                     //alert(Result.d.UserValue);
                     //Result = Result.d;
-                    var data = [];
-                    for (var i in Result) {
-                        var serie = new Array(Result[i].Name, Result[i].Value);
-                        data.push(serie);
+                    //var data = [];
+                    //for (var i in Result) {
+                    //    var serie = new Array(Result[i].Name, Result[i].Value);
+                    //    data.push(serie);
+                    //}
+                    var tblval = "<table class='responstable'><tr><th>Supervisor Name</th><th>Score</th><th>Top KPIs</th><th>Bottom KPIs</th></tr>";
+                    for (var ctr = 0; ctr < Result.d.UserName.length; ctr++)
+                    {
+                        tblval += "<tr><td>" + Result.d.UserName[ctr] + "</td><td>" + Result.d.UserScore[ctr] + "</td><td>" + Result.d.TopKPIs[ctr] + "</td><td>" + Result.d.BottomKPIs[ctr] + "</td></tr>";
                     }
+                    tblval += "</table>";
+                    $('#divtable').append(tblval);
 
                     $('#divCenter').html(Result.d.HeaderName);
                     //DreawChart(data);
@@ -114,7 +113,7 @@
 
             $('#container').highcharts({
                 chart: {
-                    type: 'bar'
+                    type: 'column'
                 },
                 title: {
                     text: 'Supervisor Details'
@@ -141,14 +140,15 @@
                     min: 0,
                     title: {
                         text: 'Points (in %)'
-                    },
-                    stackLabels: {
-                        enabled: false,
-                        style: {
-                            fontWeight: 'bold',
-                            color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
-                        }
                     }
+                    //,
+                    //stackLabels: {
+                    //    enabled: false,
+                    //    style: {
+                    //        fontWeight: 'bold',
+                    //        color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                    //    }
+                    //}
                 },
 
                 tooltip: {
@@ -167,47 +167,38 @@
                     //headerFormat: '<b>{point.x}</b><br/>',
                     //pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
                 },
-                plotOptions: {
-                    column: {
-                        stacking: 'percent',
-                        dataLabels: {
-                            enabled: true,
-                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
-                            style: {
-                                textShadow: '0 0 3px black'
-                            }
-                        }
-                    }
-                },
+                //plotOptions: {
+                //    column: {
+                //        stacking: 'percent',
+                //        dataLabels: {
+                //            enabled: true,
+                //            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                //            style: {
+                //                textShadow: '0 0 3px black'
+                //            }
+                //        }
+                //    }
+                //},
                 series: [{
                     showInLegend: false,
                     name: 'Supervisors',
-                    data: arr,
-                    dataLabels: {
-                        enabled: true,
-                        y: -14,
-                        formatter: function () {
-                            var indformat = uname.indexOf(this.x);
-                            var otherY = this.series.chart.series[0].yData[this.point.x];
-                            if (this.y >= otherY) {
-                                return '<div style="padding-top: 10px">Top KPI: ' + utopkpi[indformat] + '<br/>Bottom KPI: ' + ubottomkpi[indformat] + "</div>";
-                            } else {
-                                return null;
-                            }
-                        }
-                    }
+                    data: arr
+                    //,
+                    //dataLabels: {
+                    //    enabled: true,
+                    //    y: -14,
+                    //    formatter: function () {
+                    //        var indformat = uname.indexOf(this.x);
+                    //        var otherY = this.series.chart.series[0].yData[this.point.x];
+                    //        if (this.y >= otherY) {
+                    //            return '<div style="padding-top: 10px">Top KPI: ' + utopkpi[indformat] + '<br/>Bottom KPI: ' + ubottomkpi[indformat] + "</div>";
+                    //        } else {
+                    //            return null;
+                    //        }
+                    //    }
+                    //}
                 }
-
-                //, {
-                //    name: 'Jane',
-                //    data: [2, 2, 3, 2, 1]
-                //}, {
-                //    name: 'Joe',
-                //    data: [3, 4, 4, 2, 5]
-                //}
                 ]
-
-
 
             });
             
@@ -290,10 +281,10 @@
             height:130px;
         }
 
-       /*.ui-layout-resizer-east
+       .ui-layout-resizer-east
        {
            right : 40% !important;
-       }*/
+       }
 
     </style>
 </head>
@@ -301,7 +292,8 @@
     <form id="form1" runat="server">
          <div class="ui-layout-center leftpane">
         <div id="upleft">
-            <div id="container" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
+            <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+            <div id="divtable" style="width:100%"></div>
         </div>
 
     </div>
@@ -318,7 +310,6 @@
         </div>
 
         <div id="ldrboarddiv">
-
         </div>
     </div>
 

@@ -93,6 +93,7 @@
     <Content Include="Content\Scripts\Libs\jquery.layout.js" />
     <Content Include="Content\Styles\jquery-ui-slider-pips.css" />
     <Content Include="Content\Styles\jquery-ui.min.css" />
+    <Content Include="Content\Styles\tablestyle.css" />
     <Content Include="DetailView.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Services\CCTService.asmx" />

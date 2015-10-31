@@ -143,14 +143,6 @@
                     name: 'Agents',
                     data: arr
                 }
-
-                //, {
-                //    name: 'Jane',
-                //    data: [2, 2, 3, 2, 1]
-                //}, {
-                //    name: 'Joe',
-                //    data: [3, 4, 4, 2, 5]
-                //}
                 ],
                 dataLabels: {
                     enabled: true,
