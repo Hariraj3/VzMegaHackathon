@@ -326,7 +326,7 @@
 
     </div>
     <div class="ui-layout-north topheader">
-        Call Center Gamfication
+        Call Center Workforce Optimization
 
         <div style="float:right; color: yellow" id="divCenter">CSSC</div>
         <div style="float:right">Center Name: &nbsp;&nbsp; </div>

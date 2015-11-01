@@ -622,7 +622,7 @@
             
         </div>--%>
         <div class="ui-layout-north topheader">
-            Call Center Gamfication
+            Call Center Workforce Optimization
             <div style="float: right; color: yellow" id="divAgentName"></div>
             <div style="float: right">Agent Name: <%= agentViewInfo.AgentName %> </div>
         </div>

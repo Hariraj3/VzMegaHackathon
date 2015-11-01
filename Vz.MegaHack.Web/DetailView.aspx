@@ -161,7 +161,7 @@
 
         
     </div>
-    <div class="ui-layout-north topheader">Call Center Gamfication
+    <div class="ui-layout-north topheader">Call Center Workforce Optimization
 
         <div style="float:right; color: yellow" id="divSupName"></div>
         <div style="float:right">Supervisor Name: &nbsp;&nbsp; </div>
@@ -580,12 +580,12 @@
                     //$('#divOutput').append("<table id='tableOutput' class='table table-header-rotated' style='margin: 57px auto 0px auto;'><thead><tr><th></th><th>Behaviour Attribute</th>");
                     tblVal = "<table id='tableOutput' class='table table-header-rotated' style='margin: 57px auto 0px auto;'><thead><tr><th></th><th>Behaviour Attribute</th>";
                     //Table Header
-                    for (var i in Result.d.HeatMapView[0]) {
+                    for (var i in Result.d.HeatMapView[1]) {
                         if ((i == ".Standard Deviation") || (i == ".Behavior Attribute") || (i == "..Category")) {
                             continue;
                         }
                         //$('#divOutput').append("<th class='rotate'><div><span>" + i + "</span></div></th>");
-                        tblVal += "<th class='rotate'><div><span><a onclick='Navigate2Agent(1)'>" + i + "</a></span></div></th>";
+                        tblVal += "<th class='rotate'><div><span><a onclick='Navigate2Agent('" + Result.d.HeatMapView[0][i] + "')'>" + i + "</a></span></div></th>";
                     }
 
                     //$('#divOutput').append("</tr></thead><tbody>");
@@ -594,7 +594,7 @@
                     //var hmlength = Object.keys(Result.d.HeatMapView[0]).length;
                     var hmlength = Result.d.HeatMapView.length;
                     var callAttr = "";
-                    for (var ctr = 0; ctr < hmlength; ctr++) {
+                    for (var ctr = 1; ctr < hmlength; ctr++) {
                         //$('#divOutput').append("<tr class='attr' data-sd='" + Result.d.HeatMapView[ctr]['.Standard Deviation'] + "'>");
                         tblVal += "<tr class='attr' data-sd='" + Result.d.HeatMapView[ctr]['.Standard Deviation'] + "'>";
                         if (callAttr != Result.d.HeatMapView[ctr]['..Category']) {
