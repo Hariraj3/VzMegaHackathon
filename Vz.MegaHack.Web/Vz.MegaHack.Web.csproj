@@ -83,6 +83,7 @@
     <Content Include="Content\Images\Agent7.jpg" />
     <Content Include="Content\Images\Agent8.jpg" />
     <Content Include="Content\Images\Agent9.jpg" />
+    <Content Include="Content\Images\ListenIcon.png" />
     <Content Include="Content\Scripts\Libs\customEvents.js" />
     <Content Include="Content\Scripts\Libs\drilldown.js" />
     <Content Include="Content\Scripts\Libs\highcharts.js" />

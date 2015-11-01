@@ -84,7 +84,7 @@
 /*Footer*/
 .features-table tfoot td
 {
-  font: bold 1.4em Georgia;  
+  /*font: bold 1.4em Georgia;*/  
   -moz-border-radius-bottomright: 10px;
   -moz-border-radius-bottomleft: 10px; 
   border-bottom-right-radius: 10px;
