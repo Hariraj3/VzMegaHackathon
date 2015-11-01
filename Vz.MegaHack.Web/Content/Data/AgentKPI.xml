@@ -1161,18 +1161,18 @@
   <Agent id="022" kpiId="009" date="2015/01/19" kpiValue="75" hadTraining="False" isAwarded="False" description="" />
   <Agent id="022" kpiId="009" date="2015/05/04" kpiValue="26" hadTraining="True" isAwarded="False" description="Training 3 attended. " />
   <Agent id="022" kpiId="009" date="2015/07/10" kpiValue="77" hadTraining="False" isAwarded="False" description="" />
-  <Agent id="022" kpiId="010" date="2015/01/13" kpiValue="44" hadTraining="True" isAwarded="False" description="Training 65 attended. " />
-  <Agent id="022" kpiId="010" date="2015/06/19" kpiValue="77" hadTraining="False" isAwarded="False" description="" />
-  <Agent id="022" kpiId="010" date="2015/08/18" kpiValue="86" hadTraining="False" isAwarded="False" description="" />
-  <Agent id="022" kpiId="011" date="2015/01/11" kpiValue="82" hadTraining="False" isAwarded="False" description="" />
-  <Agent id="022" kpiId="011" date="2015/04/28" kpiValue="78" hadTraining="False" isAwarded="False" description="" />
-  <Agent id="022" kpiId="011" date="2015/09/07" kpiValue="86" hadTraining="False" isAwarded="False" description="" />
-  <Agent id="022" kpiId="012" date="2015/02/11" kpiValue="76" hadTraining="False" isAwarded="False" description="" />
-  <Agent id="022" kpiId="012" date="2015/06/28" kpiValue="65" hadTraining="False" isAwarded="False" description="" />
-  <Agent id="022" kpiId="012" date="2015/08/05" kpiValue="39" hadTraining="True" isAwarded="True" description="Training 40 attended. Award 53 presented." />
-  <Agent id="022" kpiId="013" date="2015/02/14" kpiValue="73" hadTraining="False" isAwarded="False" description="" />
-  <Agent id="022" kpiId="013" date="2015/04/28" kpiValue="44" hadTraining="True" isAwarded="False" description="Training 83 attended. " />
-  <Agent id="022" kpiId="013" date="2015/09/23" kpiValue="52" hadTraining="False" isAwarded="False" description="" />
+  <Agent id="022" kpiId="010" date="2015/03/24" kpiValue="32" hadTraining="False" isAwarded="False" description="" />
+  <Agent id="022" kpiId="010" date="2015/04/20" kpiValue="50" hadTraining="True" isAwarded="False" description="Training 89 attended." />
+  <Agent id="022" kpiId="010" date="2015/07/10" kpiValue="78" hadTraining="False" isAwarded="True" description="Award 59 presented." />
+  <Agent id="022" kpiId="011" date="2015/01/02" kpiValue="43" hadTraining="False" isAwarded="False" description="" />
+  <Agent id="022" kpiId="011" date="2015/06/27" kpiValue="35" hadTraining="True" isAwarded="False" description="Training 3 attended." />
+  <Agent id="022" kpiId="011" date="2015/08/19" kpiValue="82" hadTraining="False" isAwarded="True" description="Award 48 presented." />
+  <Agent id="022" kpiId="012" date="2015/02/22" kpiValue="60" hadTraining="False" isAwarded="False" description="" />
+  <Agent id="022" kpiId="012" date="2015/04/19" kpiValue="72" hadTraining="False" isAwarded="False" description="" />
+  <Agent id="022" kpiId="012" date="2015/07/09" kpiValue="50" hadTraining="True" isAwarded="False" description="Training 32 attended." />
+  <Agent id="022" kpiId="013" date="2015/03/21" kpiValue="55" hadTraining="False" isAwarded="False" description="" />
+  <Agent id="022" kpiId="013" date="2015/05/05" kpiValue="64" hadTraining="True" isAwarded="False" description="Training 42 attended." />
+  <Agent id="022" kpiId="013" date="2015/07/18" kpiValue="92" hadTraining="False" isAwarded="True" description="Award 42 presented." />
   <Agent id="022" kpiId="014" date="2015/01/25" kpiValue="63" hadTraining="False" isAwarded="False" description="" />
   <Agent id="022" kpiId="014" date="2015/05/15" kpiValue="33" hadTraining="True" isAwarded="True" description="Training 75 attended. Award 18 presented." />
   <Agent id="022" kpiId="014" date="2015/07/12" kpiValue="89" hadTraining="False" isAwarded="False" description="" />
