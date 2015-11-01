@@ -159,7 +159,7 @@
 
         
     </div>
-    <div class="ui-layout-north topheader">Call Center Workforce Optimization
+    <div class="ui-layout-north topheader"><a href="CenterView.aspx?cid=001" style="text-decoration: none; color: white">Cozy 3.0 - Call Center Workforce Optimization</a>
         <div style="float:right; color: yellow" id="divSupName"></div>
         <div style="float:right">Supervisor Name: &nbsp;&nbsp; </div>
     </div>

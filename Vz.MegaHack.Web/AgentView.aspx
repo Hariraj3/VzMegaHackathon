@@ -622,7 +622,7 @@
             
         </div>--%>
         <div class="ui-layout-north topheader">
-            Cozy 3.0 - Call Center Workforce Optimization
+            <a href="CenterView.aspx?cid=001" style="text-decoration: none; color: white">Cozy 3.0 - Call Center Workforce Optimization</a>
             <div style="float: right; color: yellow" id="divAgentName"></div>
             <div style="float: right">Agent Name: <%= agentViewInfo.AgentName %> </div>
         </div>
