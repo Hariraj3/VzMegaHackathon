@@ -1,0 +1,12 @@
+language: csharp
+solution: Vz.MegaHack.sln
+mono:
+  - latest
+
+before_install:
+  - sudo apt-get install nunit-console
+
+before_script:
+  - nuget restore Vz.MegaHack.sln
+after_script:
+  - nunit-console Vz.MegaHack.Test/bin/Debug/Vz.MegaHack.Test.dll
