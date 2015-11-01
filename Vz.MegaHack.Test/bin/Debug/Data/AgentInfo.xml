@@ -2,36 +2,36 @@
 <Agents>
   <Agent id="001" name="Jerome Westfall" date="10/01/2015" points="726" centerId="001" supervisorId="001" photoFileName="agent1.jpg" />
   <Agent id="002" name="Kelley Julius" date="10/01/2015" points="817" centerId="001" supervisorId="001" photoFileName="agent2.jpg" />
-  <Agent id="003" name="Tony Bevil" date="10/01/2015" points="768" centerId="001" supervisorId="001" photoFileName="agent5.jpg" />
+  <Agent id="003" name="Tony Bevil" date="10/01/2015" points="960" centerId="001" supervisorId="001" photoFileName="agent5.jpg" />
   <Agent id="004" name="Adan Savedra" date="10/01/2015" points="558" centerId="001" supervisorId="001" photoFileName="agent1.jpg" />
   <Agent id="005" name="Stan Gunderson" date="10/01/2015" points="206" centerId="001" supervisorId="001" photoFileName="agent4.jpg" />
   <Agent id="006" name="Norris Bence" date="10/01/2015" points="558" centerId="001" supervisorId="001" photoFileName="agent1.jpg" />
-  <Agent id="007" name="Clint Joo" date="10/01/2015" points="906" centerId="001" supervisorId="001" photoFileName="agent2.jpg" />
+  <Agent id="007" name="Clint Joo" date="10/01/2015" points="966" centerId="001" supervisorId="001" photoFileName="agent2.jpg" />
   <Agent id="008" name="Rob Echols" date="10/01/2015" points="442" centerId="001" supervisorId="001" photoFileName="agent5.jpg" />
   <Agent id="009" name="Ronald Beaudette" date="10/01/2015" points="977" centerId="001" supervisorId="001" photoFileName="agent4.jpg" />
   <Agent id="010" name="Hugh Varner" date="10/01/2015" points="273" centerId="001" supervisorId="001" photoFileName="agent5.jpg" />
   <Agent id="011" name="Shirley Satter" date="10/01/2015" points="291" centerId="001" supervisorId="002" photoFileName="agent5.jpg" />
   <Agent id="012" name="Yong Carolan" date="10/01/2015" points="467" centerId="001" supervisorId="002" photoFileName="agent5.jpg" />
   <Agent id="013" name="Amado Kaur" date="10/01/2015" points="632" centerId="001" supervisorId="002" photoFileName="agent5.jpg" />
-  <Agent id="014" name="Willie Winders" date="10/01/2015" points="469" centerId="001" supervisorId="002" photoFileName="agent5.jpg" />
+  <Agent id="014" name="Willie Winders" date="10/01/2015" points="995" centerId="001" supervisorId="002" photoFileName="agent5.jpg" />
   <Agent id="015" name="Horace Blossom" date="10/01/2015" points="982" centerId="001" supervisorId="002" photoFileName="agent2.jpg" />
   <Agent id="016" name="Jamison Suire" date="10/01/2015" points="30" centerId="001" supervisorId="002" photoFileName="agent3.jpg" />
   <Agent id="017" name="Aubrey Brockett" date="10/01/2015" points="862" centerId="001" supervisorId="002" photoFileName="agent4.jpg" />
-  <Agent id="018" name="Chad Aleshire" date="10/01/2015" points="995" centerId="001" supervisorId="002" photoFileName="agent3.jpg" />
+  <Agent id="018" name="Chad Aleshire" date="10/01/2015" points="320" centerId="001" supervisorId="002" photoFileName="agent3.jpg" />
   <Agent id="019" name="Emerson Fadden" date="10/01/2015" points="677" centerId="001" supervisorId="002" photoFileName="agent4.jpg" />
-  <Agent id="020" name="Roman Patillo" date="10/01/2015" points="314" centerId="001" supervisorId="002" photoFileName="agent2.jpg" />
+  <Agent id="020" name="Roman Patillo" date="10/01/2015" points="980" centerId="001" supervisorId="002" photoFileName="agent2.jpg" />
   <Agent id="021" name="Steven Benfield" date="10/01/2015" points="816" centerId="001" supervisorId="003" photoFileName="agent4.jpg" />
   <Agent id="022" name="Dustin Korn" date="10/01/2015" points="848" centerId="001" supervisorId="003" photoFileName="agent1.jpg" />
   <Agent id="023" name="Timothy Kofoed" date="10/01/2015" points="991" centerId="001" supervisorId="003" photoFileName="agent5.jpg" />
-  <Agent id="024" name="Fidel Sprvill" date="10/01/2015" points="32" centerId="001" supervisorId="003" photoFileName="agent3.jpg" />
+  <Agent id="024" name="Fidel Sprvill" date="10/01/2015" points="975" centerId="001" supervisorId="003" photoFileName="agent3.jpg" />
   <Agent id="025" name="Nathanial Gooch" date="10/01/2015" points="699" centerId="001" supervisorId="003" photoFileName="agent2.jpg" />
   <Agent id="026" name="Sergio Kontos" date="10/01/2015" points="526" centerId="001" supervisorId="003" photoFileName="agent2.jpg" />
   <Agent id="027" name="Byron Watrous" date="10/01/2015" points="934" centerId="001" supervisorId="003" photoFileName="agent2.jpg" />
-  <Agent id="028" name="Earnest Lafferty" date="10/01/2015" points="687" centerId="001" supervisorId="003" photoFileName="agent3.jpg" />
+  <Agent id="028" name="Earnest Lafferty" date="10/01/2015" points="970" centerId="001" supervisorId="003" photoFileName="agent3.jpg" />
   <Agent id="029" name="Marcelo Dick" date="10/01/2015" points="546" centerId="001" supervisorId="003" photoFileName="agent2.jpg" />
   <Agent id="030" name="Alton Autry" date="10/01/2015" points="81" centerId="001" supervisorId="003" photoFileName="agent2.jpg" />
-  <Agent id="031" name="Sandy Zeiler" date="10/01/2015" points="187" centerId="001" supervisorId="004" photoFileName="agent4.jpg" />
-  <Agent id="032" name="Rueben Fesler" date="10/01/2015" points="453" centerId="001" supervisorId="004" photoFileName="agent1.jpg" />
+  <Agent id="031" name="Sandy Zeiler" date="10/01/2015" points="940" centerId="001" supervisorId="004" photoFileName="agent4.jpg" />
+  <Agent id="032" name="Rueben Fesler" date="10/01/2015" points="955" centerId="001" supervisorId="004" photoFileName="agent1.jpg" />
   <Agent id="033" name="Maxwell Hoisington" date="10/01/2015" points="297" centerId="001" supervisorId="004" photoFileName="agent3.jpg" />
   <Agent id="034" name="Dario Nugent" date="10/01/2015" points="988" centerId="001" supervisorId="004" photoFileName="agent3.jpg" />
   <Agent id="035" name="Mohamed Augustyn" date="10/01/2015" points="642" centerId="001" supervisorId="004" photoFileName="agent2.jpg" />
