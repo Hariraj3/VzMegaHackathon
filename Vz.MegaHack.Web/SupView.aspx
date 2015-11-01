@@ -286,7 +286,6 @@
             <div id="container" style="min-width: 310px; height: 470px; margin: 0 auto"></div>
             <div id="mainn" style="width:70%; padding-top: 50px;"></div>
         </div>
-
         
     </div>
     <div class="ui-layout-north topheader">Call Center Workforce Optimization
