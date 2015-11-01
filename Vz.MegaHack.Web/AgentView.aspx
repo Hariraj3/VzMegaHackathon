@@ -4,13 +4,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Cozy 3.0 - Call Center Workforce Optimization</title>
     <script src="Content/Scripts/Libs/jquery-1.10.2.min.js"></script>
     <script src="Content/Scripts/Libs/jquery.layout.js"></script>
     <a href="AgentView.aspx">AgentView.aspx</a>
     <script src="Content/Scripts/Libs/customEvents.js"></script>
-    <script src="https://code.highcharts.com/stock/highstock.js"></script>
-    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="Content/Scripts/Libs/highstock.js"></script>
+    <script src="Content/Scripts/Libs/highcharts-3d.js"></script>
+    <%--<script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>--%>
     <link href="Content/Styles/tablestyle.css" rel="stylesheet" />
 
     <script type="text/javascript">

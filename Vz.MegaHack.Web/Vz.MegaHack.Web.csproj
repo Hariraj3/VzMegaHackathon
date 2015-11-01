@@ -116,7 +116,9 @@
     <Content Include="Content\Images\ListenIcon.png" />
     <Content Include="Content\Scripts\Libs\customEvents.js" />
     <Content Include="Content\Scripts\Libs\drilldown.js" />
+    <Content Include="Content\Scripts\Libs\highcharts-3d.js" />
     <Content Include="Content\Scripts\Libs\highcharts.js" />
+    <Content Include="Content\Scripts\Libs\highstock.js" />
     <Content Include="Content\Scripts\Libs\jquery-1.10.2.min.js" />
     <Content Include="Content\Scripts\Libs\jquery-ui-slider-pips.js" />
     <Content Include="Content\Scripts\Libs\jquery-ui.js" />
