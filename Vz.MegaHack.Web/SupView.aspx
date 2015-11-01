@@ -92,7 +92,7 @@
                     type: 'column'
                 },
                 title: {
-                    text: 'Agent Details'
+                    text: 'Agents'
                 },
                 xAxis: {
                     type: 'category',

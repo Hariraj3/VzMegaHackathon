@@ -58,7 +58,7 @@
                 success: function (Result) {
                     for (var i = 0; i < Result.d.length; i++) {
                         var iTemp = i;
-                        $("#ldrboarddiv").append("<div style='clear:both; width: 100%'><div style='float: left; width: 30%'><img style='padding-left: 10px' src='Content/Images/Agent" + parseInt(parseInt(iTemp) + 1) + ".jpg' class='curvedimage' /></div><div style='float: left; color:white; width: 70%; margin-top: 10px; line-height: 26px'><b>Agent Name: </b>" + Result.d[i].Name + "<br /><b>Score: </b>" + Result.d[i].TotalPoints + " pts<br /><b>Rank: </b>" + Result.d[i].Rank + "</div></div>");
+                        $("#ldrboarddiv").append("<div style='clear:both; width: 100%'><div style='float: left; width: 30%'><a href='AgentView.aspx?cid=" + centerid + "&aid=" + Result.d[i].Id + "'><img style='padding-left: 10px' src='Content/Images/Agent" + parseInt(parseInt(iTemp) + 1) + ".jpg' class='curvedimage' /></a></div><div style='float: left; color:white; width: 70%; margin-top: 10px; line-height: 26px'><b>Agent Name: </b>" + Result.d[i].Name + "<br /><b>Score: </b>" + Result.d[i].TotalPoints + " pts<br /><b>Rank: </b>" + Result.d[i].Rank + "</div></div>");
 
                         //$("#Table1").append("<tr><td class='left-align font-bold'>" + data.d[i].Make + "</td><td class='left-align font-bold'>" + data.d[i].Model + "</td><td class='left-align font-bold'>" + data.d[i].Year + "</td><td class='right-align font-bold'>" + data.d[i].Doors + "</td><td class='right-align font-bold'>" + data.d[i].Colour + "</td><td class='right-align font-bold'>" + data.d[i].Price + "</td></tr>");
                     }
@@ -136,7 +136,7 @@
                 },
                 colors: ['#50B432'],
                 title: {
-                    text: 'Supervisor Details'
+                    text: 'Supervisors'
                 },
                 xAxis: {
                     categories: uname,

@@ -16,6 +16,7 @@ namespace Vz.MegaHack.Engines
             int rank = 0;
             foreach (AgentInfo agent in agents) {
                 leaderBoard.Add(new LeaderBoardItem() {
+                    Id = agent.AgentId,
                     Name = agent.AgentName,
                     TotalPoints = agent.Points,
                     PhotoFileName = agent.PhotoFileName,
