@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AgentView.aspx.cs" Inherits="Vz.MegaHack.Web.AgentView" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AgentView.aspx.cs" Inherits="Vz.MegaHack.Web.AgentView" %>
 
 <!DOCTYPE html>
 
@@ -29,7 +29,7 @@
 
             var centerid = getParameterByName('cid');
 
-            
+
 
         });
 

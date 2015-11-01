@@ -9,6 +9,8 @@
     <script src="Content/Scripts/Libs/highcharts.js"></script>
     <script src="Content/Scripts/Libs/customEvents.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <link href="Content/Styles/tablestyle.css" rel="stylesheet" />
+
     <script type="text/javascript">
 
         function getParameterByName(name) {
@@ -30,7 +32,7 @@
        
         $(document).ready(function () {
             $('body').layout({ applyDefaultStyles: true });
-            $('#divSupName').html('Tester');
+            //$('#divSupName').html('Tester');
             var centerid = getParameterByName('cid');
             var supid = getParameterByName('sid');
 
@@ -44,11 +46,12 @@
                     //alert(Result.d.UserName);
                     //alert(Result.d.UserValue);
                     //Result = Result.d;
-                    var data = [];
-                    for (var i in Result) {
-                        var serie = new Array(Result[i].Name, Result[i].Value);
-                        data.push(serie);
+                    var tblval = "<table class='features-table'><thead><tr><td>Agent Name</td><td>Score</td><td>Top KPIs</td><td>Bottom KPIs</td></tr></thead><tfoot><tr><td></td><td></td><td></td><td></td></tr></tfoot><tbody>";
+                    for (var ctr = 0; ctr < Result.d.UserName.length; ctr++) {
+                        tblval += "<tr><td>" + Result.d.UserName[ctr] + "</td><td>" + Result.d.UserScore[ctr] + "%</td><td class='replaceme'>" + Result.d.TopKPIs[ctr].replace(';', ';<br/>') + "</td><td class='replaceme'>" + Result.d.BottomKPIs[ctr].replace(';', ';<br/>') + "</td></tr>";
                     }
+                    tblval += "</tbody></table>";
+                    $('#mainn').append(tblval);
 
                     $('#divSupName').html(Result.d.HeaderName);
                     //DreawChart(data);
@@ -77,7 +80,8 @@
         });
 
         function DreawChart(uname, uvalue, utopkpi, ubottomkpi, agentids, cid, sid) {
-            var arr = []
+            var arr = [];
+            var a = 1;
             $.map(uvalue, function (item, index) {
                 arr.push(parseInt(item));
             });
@@ -94,7 +98,7 @@
                     type: 'category',
                     categories: uname,
                     labels: {
-                        rotation: -45,
+                        //rotation: -45,
                         style: {
                             cursor: 'pointer',
                             fontSize: '14px'
@@ -155,22 +159,36 @@
                         fontSize: '13px',
                         fontFamily: 'Verdana, sans-serif'
                     }
+                },
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                        enabled: true,
+                        format: '{point.y:.1f}%'
+                        }
                 }
+            }
 
+            }//);
+            , function (chart) {
+
+                var bottom = chart.plotHeight - 20;
+
+                $.each(chart.series[0].data, function (i, data) {
+                    if (data.y > 50) {
+                        data.update({
+                            color: '#50B432'
+                        });
+                    }
+                    else {
+                        data.update({
+                            color: '#ff8a45'
+                        });
+                    }
+                });
 
             });
-            //, function (chart) {
-
-            //    var bottom = chart.plotHeight - 20;
-
-            //    $.each(chart.series[0].data, function (i, data) {
-
-            //        data.dataLabel.attr({
-            //            y: bottom
-            //        });
-            //    });
-
-            //});
         }
 
 
@@ -265,7 +283,8 @@
             <div style="float:right">
                 <a style="cursor:pointer; color: darkblue; text-decoration-line: underline" onclick="gotodetailview()">Detail View</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a style="cursor:pointer; color: darkblue; text-decoration-line: underline" onclick="goback()">Back</a>
             </div>
-            <div id="container" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
+            <div id="container" style="min-width: 310px; height: 470px; margin: 0 auto"></div>
+            <div id="mainn" style="width:70%; padding-top: 50px;"></div>
         </div>
 
         

@@ -9,8 +9,11 @@
     <script src="Content/Scripts/Libs/highcharts.js"></script>
     <script src="Content/Scripts/Libs/customEvents.js"></script>
 <link href="Content/Styles/tablestyle.css" rel="stylesheet" />
+
     <script type="text/javascript">
 
+
+        
         function getParameterByName(name) {
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -70,13 +73,15 @@
                     //    var serie = new Array(Result[i].Name, Result[i].Value);
                     //    data.push(serie);
                     //}
-                    var tblval = "<table class='responstable'><tr><th>Supervisor Name</th><th>Score</th><th>Top KPIs</th><th>Bottom KPIs</th></tr>";
+                    var tblval = "<table class='features-table'><thead><tr><td>Sup Name</td><td>Score</td><td>Top KPIs</td><td>Bottom KPIs</td></tr></thead><tfoot><tr><td></td><td></td><td></td><td></td></tr></tfoot><tbody>";
                     for (var ctr = 0; ctr < Result.d.UserName.length; ctr++)
                     {
-                        tblval += "<tr><td>" + Result.d.UserName[ctr] + "</td><td>" + Result.d.UserScore[ctr] + "</td><td>" + Result.d.TopKPIs[ctr] + "</td><td>" + Result.d.BottomKPIs[ctr] + "</td></tr>";
+                        tblval += "<tr><td>" + Result.d.UserName[ctr] + "</td><td>" + Result.d.UserScore[ctr] + "</td><td class='replaceme'>" + Result.d.TopKPIs[ctr].replace(';', ';<br/>') + "</td><td class='replaceme'>" + Result.d.BottomKPIs[ctr].replace(';', ';<br/>') + "</td></tr>";
                     }
-                    tblval += "</table>";
-                    $('#divtable').append(tblval);
+                    tblval += "</tbody></table>";
+                    $('#mainn').append(tblval);
+
+                    //$('.replaceme').html('Whatever <b>HTML</b> you want here.');
 
                     $('#divCenter').html(Result.d.HeaderName);
                     //DreawChart(data);
@@ -115,6 +120,7 @@
                 chart: {
                     type: 'column'
                 },
+                colors: ['#50B432'],
                 title: {
                     text: 'Supervisor Details'
                 },
@@ -179,6 +185,15 @@
                 //        }
                 //    }
                 //},
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y:.1f}%'
+                        }
+                    }
+                },
                 series: [{
                     showInLegend: false,
                     name: 'Supervisors',
@@ -293,7 +308,7 @@
          <div class="ui-layout-center leftpane">
         <div id="upleft">
             <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-            <div id="divtable" style="width:100%"></div>
+            <div id="mainn" style="width:70%; padding-top: 50px;"></div>
         </div>
 
     </div>

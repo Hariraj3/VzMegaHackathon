@@ -12,14 +12,14 @@
     <form id="form1" runat="server">
          <div class="ui-layout-center leftpane">
         <div id="upleft">
-            <div style="float: left">
-                <h2>Heat Map View</h2>
+            <div style="float: left; margin-top: -21px;">
+                <h3>Heat Map View</h3>
             </div>
             <div style="float: right">
                 <a style="cursor:pointer; color: darkblue; text-decoration-line: underline" onclick="goback()">Back</a>
             </div>
                 <div id="divOutput"></div>
-                <table id="tableOutput2" class="table table-header-rotated" style="margin: 57px auto 0px auto;">
+                <%--<table id="tableOutput2" class="table table-header-rotated" style="margin: 57px auto 0px auto;">
                     <thead>
                     <tr>
                         <th></th>
@@ -155,7 +155,7 @@
                             <td class="val">7.5</td>
                         </tr>
                     </tbody>
-                </table>
+                </table>--%>
             
         </div>
 
@@ -574,6 +574,7 @@
                     //alert(Result.d.UserName);
                     //alert(Result.d.UserValue);
                     //Result = Result.d;
+                    $('#divSupName').html(Result.d.SupervisorName);
                     var tblVal = "";
                     //Table Tag
                     //$('#divOutput').append("<table id='tableOutput' class='table table-header-rotated' style='margin: 57px auto 0px auto;'><thead><tr><th></th><th>Behaviour Attribute</th>");
@@ -584,7 +585,7 @@
                             continue;
                         }
                         //$('#divOutput').append("<th class='rotate'><div><span>" + i + "</span></div></th>");
-                        tblVal += "<th class='rotate'><div><span>" + i + "</span></div></th>";
+                        tblVal += "<th class='rotate'><div><span><a onclick='Navigate2Agent(1)'>" + i + "</a></span></div></th>";
                     }
 
                     //$('#divOutput').append("</tr></thead><tbody>");
