@@ -75,6 +75,17 @@
     <Content Include="bin\Debug\Data\CenterInfo.xml" />
     <Content Include="bin\Debug\Data\KPIInfo.xml" />
     <Content Include="bin\Debug\Data\SupervisorInfo.xml" />
+    <Content Include="bin\Debug\nunit.framework.dll" />
+    <Content Include="bin\Debug\Vz.MegaHack.Core.dll" />
+    <Content Include="bin\Debug\Vz.MegaHack.Core.pdb" />
+    <Content Include="bin\Debug\Vz.MegaHack.Data.dll" />
+    <Content Include="bin\Debug\Vz.MegaHack.Data.pdb" />
+    <Content Include="bin\Debug\Vz.MegaHack.Engines.dll" />
+    <Content Include="bin\Debug\Vz.MegaHack.Engines.pdb" />
+    <Content Include="bin\Debug\Vz.MegaHack.Entities.dll" />
+    <Content Include="bin\Debug\Vz.MegaHack.Entities.pdb" />
+    <Content Include="bin\Debug\Vz.MegaHack.Test.dll" />
+    <Content Include="bin\Debug\Vz.MegaHack.Test.pdb" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vz.MegaHack.Core\Vz.MegaHack.Core.csproj">
