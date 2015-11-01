@@ -191,7 +191,7 @@ namespace Vz.MegaHack.Engines
                 item.Add(".Standard Deviation", standardDeviation.ToString("F"));
 
                 foreach (var row in supervisorAgents) {
-                    item.Add(row.AgentName, row.AgentId);
+                    item.Add(row.AgentName, "");
                 }
 
                 foreach (var row in kpiRows) {
@@ -213,7 +213,7 @@ namespace Vz.MegaHack.Engines
             List<AgentKPIScore> agentView = new List<AgentKPIScore>();
 
             List<KPIInfo> kpis = KPIReader.GetKPIInfo();
-            List<AgentKPIInfo> agentKpis = KPIReader.GetAgentKPIForView();
+            List<AgentKPIInfo> agentKpis = KPIReader.GetAgentKPI2();
             AgentInfo agentInfo = AgentReader.GetAgentInfo(agentId);
 
             var result = from k in kpis

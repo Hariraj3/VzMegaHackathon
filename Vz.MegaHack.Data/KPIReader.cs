@@ -81,8 +81,8 @@ namespace Vz.MegaHack.Data
             return latestElements.ToList();
             //return elements;
         }
-        
-        public static List<AgentKPIInfo> GetAgentKPIForView() {
+
+        public static List<AgentKPIInfo> GetAgentKPI2() {
             List<AgentKPIInfo> elements = new List<AgentKPIInfo>();
 
             XDocument doc = XDocument.Load(Path.Combine(PathManager.DataPath, agentKpiFile));
@@ -128,12 +128,7 @@ namespace Vz.MegaHack.Data
                 });
             }
 
-            var latestElements = from e in elements
-                                 group e by e.Date into g
-                                 select g.OrderByDescending(i => i.Date).FirstOrDefault();
-
-            return latestElements.ToList();
-            //return elements;
+            return elements;
         }
 
     }

@@ -9,7 +9,7 @@
   <KPI id="007" name="Silent time > 3 mins" category="Call Attributes"/>
   <KPI id="008" name="Escalate to Supervisor" category="Speech Analytics"/>
   <KPI id="009" name="Negative Attitude" category="Speech Analytics"/>
-  <KPI id="010" name="Adjusted Calls Per Hour" category="Speech Analytics"/>
+  <KPI id="010" name="Adjusted Calls Per Hour" category="Metrics"/>
   <KPI id="011" name="All In Save Rate" category="Metrics"/>
   <KPI id="012" name="Average Handling Time" category="Metrics"/>
   <KPI id="013" name="Entire Rep Performance" category="Metrics"/>

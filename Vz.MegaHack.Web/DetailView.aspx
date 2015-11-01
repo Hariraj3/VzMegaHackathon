@@ -581,8 +581,15 @@
                         if ((i == ".Standard Deviation") || (i == ".Behavior Attribute") || (i == "..Category")) {
                             continue;
                         }
-                        //$('#divOutput').append("<th class='rotate'><div><span>" + i + "</span></div></th>");
-                        tblVal += "<th class='rotate'><div><span><a style='cursor:pointer' onclick='Navigate2Agent(\"" + Result.d.HeatMapView[0][i] + "\")'>" + i + "</a></span></div></th>";
+                        else if (i == ".Center Average")
+                        {
+                            tblVal += "<th class='rotate'><div><span>Center Average</span></div></th>";
+                        }
+                        else
+                        {
+                            tblVal += "<th class='rotate'><div><span><a style='cursor:pointer' onclick='Navigate2Agent(\"" + Result.d.HeatMapView[0][i] + "\")'>" + i + "</a></span></div></th>";
+                        }
+                        
                     }
 
                     //$('#divOutput').append("</tr></thead><tbody>");
@@ -601,11 +608,11 @@
                             }
                             else if (Result.d.HeatMapView[ctr]['..Category'] == "Speech Analytics") {
                                 //$('#divOutput').append("<th class='row-header' rowspan='2'>Speech Analytics</th>");
-                                tblVal += "<th class='row-header' rowspan='3'>Speech Analytics</th>";
+                                tblVal += "<th class='row-header' rowspan='2'>Speech Analytics</th>";
                             }
                             else if (Result.d.HeatMapView[ctr]['..Category'] == "Metrics") {
                                 //$('#divOutput').append("<th class='row-header' rowspan='9'>Metrics</th>");
-                                tblVal += "<th class='row-header' rowspan='8'>Metrics</th>";
+                                tblVal += "<th class='row-header' rowspan='9'>Metrics</th>";
                             }
                         }
 
