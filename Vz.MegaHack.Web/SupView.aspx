@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Cozy 3.0 - Call Center Workforce Optimization</title>
     <script src="Content/Scripts/Libs/jquery-1.10.2.min.js"></script>
     <script src="Content/Scripts/Libs/jquery.layout.js"></script>
     <script src="Content/Scripts/Libs/highcharts.js"></script>

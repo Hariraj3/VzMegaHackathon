@@ -3,12 +3,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Cozy 3.0 - Call Center Workforce Optimization</title>
     <script src="Content/Scripts/Libs/jquery-1.10.2.min.js"></script>
     <script src="Content/Scripts/Libs/jquery.layout.js"></script>
     <script src="Content/Scripts/Libs/highcharts.js"></script>
     <script src="Content/Scripts/Libs/customEvents.js"></script>
-<link href="Content/Styles/tablestyle.css" rel="stylesheet" />
+    <link href="Content/Styles/tablestyle.css" rel="stylesheet" />
 
     <script type="text/javascript">
 
@@ -326,7 +326,7 @@
 
     </div>
     <div class="ui-layout-north topheader">
-        Call Center Workforce Optimization
+        Cozy 3.0 - Call Center Workforce Optimization
         <div style="float:right; color: yellow" id="divCenter">CSSC</div>
         <div style="float:right">Center Name: &nbsp;&nbsp; </div>
     </div>

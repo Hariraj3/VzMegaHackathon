@@ -3,9 +3,7 @@
 
 <html class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
 <head runat="server">
-    <title></title>
-    
-
+    <title>Cozy 3.0 - Call Center Workforce Optimization</title>
     
 </head>
 <body>
@@ -584,7 +582,7 @@
                             continue;
                         }
                         //$('#divOutput').append("<th class='rotate'><div><span>" + i + "</span></div></th>");
-                        tblVal += "<th class='rotate'><div><span><a onclick='Navigate2Agent('" + Result.d.HeatMapView[0][i] + "')'>" + i + "</a></span></div></th>";
+                        tblVal += "<th class='rotate'><div><span><a style='cursor:pointer' onclick='Navigate2Agent(\"" + Result.d.HeatMapView[0][i] + "\")'>" + i + "</a></span></div></th>";
                     }
 
                     //$('#divOutput').append("</tr></thead><tbody>");
