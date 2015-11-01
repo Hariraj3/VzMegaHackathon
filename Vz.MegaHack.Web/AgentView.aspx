@@ -199,7 +199,6 @@
                     data: [<%= centerAverage[0].ToString()%>],
                     tooltip: {
                         headerFormat: '<span style="font-size: 11px;color:#666">{point.x:%B %e, %Y}</span><br>',
-                        valueSuffix: ' %'
                     }
 
                 }, {
@@ -211,7 +210,6 @@
                     tooltip: {
                         headerFormat: '<span style="font-size: 11px;color:#666">{point.x:%B %e, %Y}</span><br>',
                         //pointFormat: '{point.name}<br><b>{point.y}</b>',
-                        valueSuffix: ' %'
                     },
                     data: [<%= kpiScores[0].ToString()%>]
 
@@ -313,7 +311,6 @@
                     data: [<%= centerAverage[2].ToString()%>],
                     tooltip: {
                         headerFormat: '<span style="font-size: 11px;color:#666">{point.x:%B %e, %Y}</span><br>',
-                        valueSuffix: ' %'
                     }
 
                 }, {
@@ -325,7 +322,6 @@
                     tooltip: {
                         headerFormat: '<span style="font-size: 11px;color:#666">{point.x:%B %e, %Y}</span><br>',
                         //pointFormat: '{point.name}<br><b>{point.y}</b>',
-                        valueSuffix: ' %'
                     },
                     data: [<%= kpiScores[2].ToString()%>]
 
