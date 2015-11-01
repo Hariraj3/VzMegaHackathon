@@ -213,7 +213,7 @@ namespace Vz.MegaHack.Engines
             List<AgentKPIScore> agentView = new List<AgentKPIScore>();
 
             List<KPIInfo> kpis = KPIReader.GetKPIInfo();
-            List<AgentKPIInfo> agentKpis = KPIReader.GetAgentKPI();
+            List<AgentKPIInfo> agentKpis = KPIReader.GetAgentKPIForView();
             AgentInfo agentInfo = AgentReader.GetAgentInfo(agentId);
 
             var result = from k in kpis
