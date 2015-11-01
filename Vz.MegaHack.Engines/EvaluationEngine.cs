@@ -128,32 +128,32 @@ namespace Vz.MegaHack.Engines
         public static HeatMapViewResponse GetHeatMapView(string supervisorId) {
             var heatMapItems = new List<Dictionary<string, string>>();
 
+            string centerId = AgentReader.GetCenterIdForSupervisor(supervisorId);
             List<KPIInfo> kpis = KPIReader.GetAllKPIInfo();
             List<AgentKPIInfo> agentKpis = KPIReader.GetAgentAllKPI();
-            List<AgentInfo> agents = AgentReader.GetAgentsForSupervisor(supervisorId);
-
-            string centerId = AgentReader.GetCenterIdForSupervisor(supervisorId);
+            List<AgentInfo> supervisorAgents = AgentReader.GetAgentsForSupervisor(supervisorId).OrderBy(a => a.AgentName).ToList();
             List<AgentInfo> centerAgents = AgentReader.GetAgentsForCenter(centerId);
 
             var result = from k in kpis
                          join ak in agentKpis on k.KpiId equals ak.KpiId
-                         join a in agents on ak.AgentId equals a.AgentId
+                         join a in supervisorAgents on ak.AgentId equals a.AgentId
                          orderby k.Category, k.KpiId, a.AgentName
                          select new { a.AgentId, a.AgentName, a.Date, k.KpiId, k.KpiName, ak.KpiValue, k.Category };
 
             //First row has Agent IDs
-            var item = new Dictionary<string, string>();
+            var firstItem = new Dictionary<string, string>();
 
-            item.Add("..Category", "");
-            item.Add(".Behavior Attribute", "");
-            item.Add(".Center Average", "");
-            item.Add(".Standard Deviation", "");
+            firstItem.Add("..Category", "");
+            firstItem.Add(".Behavior Attribute", "");
+            firstItem.Add(".Center Average", "");
+            firstItem.Add(".Standard Deviation", "");
 
-            foreach (var row in agents.OrderBy(a => a.AgentName)) {
-                item.Add(row.AgentName, row.AgentId);
+            foreach (var row in supervisorAgents) {
+                firstItem.Add(row.AgentName, row.AgentId);
             }
 
-            heatMapItems.Add(item);
+            heatMapItems.Add(firstItem);
+
             var kpiGroups = result.GroupBy(a => a.KpiName).Select(g => g.FirstOrDefault());
 
             foreach (var kpiGroup in kpiGroups) {
@@ -179,7 +179,7 @@ namespace Vz.MegaHack.Engines
                 }
 
                 //Second + rows have values
-                item = new Dictionary<string, string>();
+                var item = new Dictionary<string, string>();
                 
                 item.Add("..Category", kpiGroup.Category);
                 item.Add(".Behavior Attribute", kpiGroup.KpiName);
@@ -190,8 +190,14 @@ namespace Vz.MegaHack.Engines
                 double standardDeviation = StatisticsHelper.GetStandardDeviation(sdList);
                 item.Add(".Standard Deviation", standardDeviation.ToString("F"));
 
+                foreach (var row in supervisorAgents) {
+                    item.Add(row.AgentName, row.AgentId);
+                }
+
                 foreach (var row in kpiRows) {
-                    item.Add(row.AgentName, row.KpiValue.ToString("F"));
+                    if (item.ContainsKey(row.AgentName)) {
+                        item[row.AgentName] = row.KpiValue.ToString("F");
+                    }
                 }
 
                 heatMapItems.Add(item);

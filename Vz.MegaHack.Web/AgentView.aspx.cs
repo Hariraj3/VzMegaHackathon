@@ -11,6 +11,7 @@ namespace Vz.MegaHack.Web
 {
     public partial class AgentView : System.Web.UI.Page
     {
+
         public AgentViewResponse agentViewInfo = new AgentViewResponse();
         public List<string> kpiScores = new List<string>();
         public List<string> centerAverage = new List<string>();
