@@ -67,6 +67,10 @@
       <Project>{659e2ff0-fc5b-4ac2-9e2e-c0851b58a971}</Project>
       <Name>Vz.MegaHack.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Vz.MegaHack.Data\Vz.MegaHack.Data.csproj">
+      <Project>{db7ec613-f6ff-464f-b887-14dda8be347a}</Project>
+      <Name>Vz.MegaHack.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vz.MegaHack.Engines\Vz.MegaHack.Engines.csproj">
       <Project>{c0f0cf1d-8597-4934-b75b-87ffa241dde1}</Project>
       <Name>Vz.MegaHack.Engines</Name>
