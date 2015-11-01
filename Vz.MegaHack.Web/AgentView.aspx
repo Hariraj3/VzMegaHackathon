@@ -424,7 +424,10 @@
                 },
                 colors: ['#50B432', '#ff8a45'],
                 title: {
-                    text: 'Desktop Analytics'
+                    text: 'Desktop Analytics',
+                    style: {
+                        color: 'maroon'
+                    }
                 },
                 credits: {
                     enabled: false
@@ -538,8 +541,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="ui-layout-center">
-            <div id="upleft">
-                <table class="table-responsive">
+           <table class="table-responsive" style="width:100%">
                     <tr>
                         <td id="chart_Container_KPI1" style="min-width: 400px; max-width: 550px; height: 300px; margin: 1em auto"></td>
                         <td id="chart_Container_KPI2" style="min-width: 400px; max-width: 550px; height: 300px; margin: 1em auto"></td>
@@ -585,13 +587,9 @@
                     <tr>
                         <td id="chart_Container_KPI3" style="min-width: 400px; max-width: 550px; height: 300px; margin: 1em auto"></td>
                         <td id="chart_Container_KPI4" style="min-width: 400px; max-width: 550px; height: 300px; margin: 1em auto"></td>
-                        <td id="desktop_container" style="height: 300px; min-width: 450px; max-width:500px"></td>
+                        <td id="desktop_container" style="height: 300px; min-width: 450px; max-width:500px; background-color:gray"></td>
                     </tr>
                 </table>
-
-                
-                
-            </div>
             <%--<div id="upright">
                 <table>
                 <tr>
@@ -624,7 +622,7 @@
             
         </div>--%>
         <div class="ui-layout-north topheader">
-            Call Center Workforce Optimization
+            Cozy 3.0 - Call Center Workforce Optimization
             <div style="float: right; color: yellow" id="divAgentName"></div>
             <div style="float: right">Agent Name: <%= agentViewInfo.AgentName %> </div>
         </div>
