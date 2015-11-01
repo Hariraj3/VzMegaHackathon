@@ -162,7 +162,6 @@
         
     </div>
     <div class="ui-layout-north topheader">Call Center Workforce Optimization
-
         <div style="float:right; color: yellow" id="divSupName"></div>
         <div style="float:right">Supervisor Name: &nbsp;&nbsp; </div>
     </div>
