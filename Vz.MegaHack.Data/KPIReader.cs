@@ -56,6 +56,38 @@ namespace Vz.MegaHack.Data
             XDocument doc = XDocument.Load(Path.Combine(PathManager.DataPath, agentKpiFile));
 
             var items = doc.Root.Elements("Agent");
+            var kpiInfo = GetKPIInfo(); //Returns only Metrics KPIs
+
+            foreach (var item in items) {
+                string kpiId = Convert.ToString(item.Attribute("kpiId").Value);
+                if (kpiInfo.Exists(k => k.KpiId.Equals(kpiId))) {
+
+                    elements.Add(new AgentKPIInfo() {
+                        AgentId = Convert.ToString(item.Attribute("id").Value),
+                        KpiId = kpiId,
+                        Date = Convert.ToDateTime(item.Attribute("date").Value),
+                        KpiValue = Convert.ToInt32(item.Attribute("kpiValue").Value),
+                        HadTraining = Convert.ToBoolean(item.Attribute("hadTraining").Value),
+                        IsAwarded = Convert.ToBoolean(item.Attribute("isAwarded").Value),
+                        Description = Convert.ToString(item.Attribute("description").Value)
+                    });
+                }
+            }
+
+            var latestElements = from e in elements
+                                 group e by e.Date into g
+                                 select g.OrderByDescending(i => i.Date).FirstOrDefault();
+
+            return latestElements.ToList();
+            //return elements;
+        }
+
+        public static List<AgentKPIInfo> GetAgentAllKPI() {
+            List<AgentKPIInfo> elements = new List<AgentKPIInfo>();
+
+            XDocument doc = XDocument.Load(Path.Combine(PathManager.DataPath, agentKpiFile));
+
+            var items = doc.Root.Elements("Agent");
 
             foreach (var item in items) {
                 elements.Add(new AgentKPIInfo() {
@@ -69,9 +101,13 @@ namespace Vz.MegaHack.Data
                 });
             }
 
-            return elements;
-        }
+            var latestElements = from e in elements
+                                 group e by e.Date into g
+                                 select g.OrderByDescending(i => i.Date).FirstOrDefault();
 
+            return latestElements.ToList();
+            //return elements;
+        }
 
     }
 }

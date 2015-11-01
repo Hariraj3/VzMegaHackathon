@@ -11,19 +11,16 @@ namespace Vz.MegaHack.Engines
         public static LeaderBoardResponse GetLeaderBoard(string centerId) {
             List<LeaderBoardItem> leaderBoard = new List<LeaderBoardItem>();
             List<AgentInfo> agents = AgentReader.GetAgentsForCenter(centerId);
+            agents = agents.OrderByDescending(a => a.Points).Take(10).ToList();
 
             int rank = 0;
-            foreach (AgentInfo agent in agents.OrderByDescending(a => a.Points)) {
+            foreach (AgentInfo agent in agents) {
                 leaderBoard.Add(new LeaderBoardItem() {
                     Name = agent.AgentName,
                     TotalPoints = agent.Points,
                     PhotoFileName = agent.PhotoFileName,
                     Rank = ++rank
                 });
-
-                if (rank >= 10) {
-                    break;
-                }
             }
 
             return new LeaderBoardResponse() { 
@@ -46,21 +43,21 @@ namespace Vz.MegaHack.Engines
                     var agentKPIs = from allK in allKPIs
                                     join a in agents on allK.AgentId equals a.AgentId
                                     group allK by allK.KpiId into g
-                                    select new { KpiId = g.First().KpiId, KpiTotal = g.Average(a => a.KpiValue) };
+                                    select new { KpiId = g.First().KpiId, KpiAvg = g.Average(a => a.KpiValue) };
 
                     string topKpiString = string.Empty;
                     string bottomKpiString = string.Empty;
 
-                    var topKPI = agentKPIs.OrderByDescending(a => a.KpiTotal).Take(2);
+                    var topKPI = agentKPIs.OrderByDescending(a => a.KpiAvg).Take(2);
                     foreach (var row in topKPI) {
                         string kpiName = kpiNames.Where(k => k.KpiId.Equals(row.KpiId)).FirstOrDefault().KpiName;
-                        topKpiString += string.Format("{0}: {1};", kpiName, row.KpiTotal);
+                        topKpiString += string.Format("{0}: {1};", kpiName, row.KpiAvg.ToString("F"));
                     }
 
-                    var bottomKPI = agentKPIs.OrderBy(a => a.KpiTotal).Take(2);
+                    var bottomKPI = agentKPIs.OrderBy(a => a.KpiAvg).Take(2);
                     foreach (var row in bottomKPI) {
                         string kpiName = kpiNames.Where(k => k.KpiId.Equals(row.KpiId)).FirstOrDefault().KpiName;
-                        bottomKpiString += string.Format("{0}: {1};", kpiName, row.KpiTotal);
+                        bottomKpiString += string.Format("{0}: {1};", kpiName, row.KpiAvg.ToString("F"));
                     }
 
                     double avgScore = supervisorKPI.Average(a => a.Score);
@@ -92,7 +89,7 @@ namespace Vz.MegaHack.Engines
                          join ak in agentKpis on k.KpiId equals ak.KpiId
                          join a in agents on ak.AgentId equals a.AgentId
                          orderby a.AgentName, ak.KpiValue ascending
-                         select new { a.AgentName, k.KpiName, ak.KpiValue };
+                         select new { a.AgentId, a.AgentName, k.KpiName, ak.KpiValue };
 
             var agentGroups = result.GroupBy(a => a.AgentName).Select(g => g.FirstOrDefault());
 
@@ -105,15 +102,16 @@ namespace Vz.MegaHack.Engines
 
                 var topKPI = agentRows.OrderByDescending(a => a.KpiValue).Take(2);
                 foreach (var row in topKPI) {
-                    topKpiString += string.Format("{0}: {1};", row.KpiName, row.KpiValue);
+                    topKpiString += string.Format("{0}: {1};", row.KpiName, row.KpiValue.ToString("F"));
                 }
 
                 var bottomKPI = agentRows.OrderBy(a => a.KpiValue).Take(2);
                 foreach (var row in bottomKPI) {
-                    bottomKpiString += string.Format("{0}: {1};", row.KpiName, row.KpiValue);
+                    bottomKpiString += string.Format("{0}: {1};", row.KpiName, row.KpiValue.ToString("F"));
                 }
 
                 supervisorView.Add(new KPIItem() {
+                    AgentId = agentGroup.AgentId,
                     AgentName = agentGroup.AgentName,
                     Score = Convert.ToInt32(avgKpi),
                     TopKPI = topKpiString,
@@ -131,7 +129,7 @@ namespace Vz.MegaHack.Engines
             var heatMapItems = new List<Dictionary<string, string>>();
 
             List<KPIInfo> kpis = KPIReader.GetAllKPIInfo();
-            List<AgentKPIInfo> agentKpis = KPIReader.GetAgentKPI();
+            List<AgentKPIInfo> agentKpis = KPIReader.GetAgentAllKPI();
             List<AgentInfo> agents = AgentReader.GetAgentsForSupervisor(supervisorId);
 
             string centerId = AgentReader.GetCenterIdForSupervisor(supervisorId);
@@ -143,6 +141,19 @@ namespace Vz.MegaHack.Engines
                          orderby k.Category, k.KpiId, a.AgentName
                          select new { a.AgentId, a.AgentName, a.Date, k.KpiId, k.KpiName, ak.KpiValue, k.Category };
 
+            //First row has Agent IDs
+            var item = new Dictionary<string, string>();
+
+            item.Add("..Category", "");
+            item.Add(".Behavior Attribute", "");
+            item.Add(".Center Average", "");
+            item.Add(".Standard Deviation", "");
+
+            foreach (var row in agents.OrderBy(a => a.AgentName)) {
+                item.Add(row.AgentName, row.AgentId);
+            }
+
+            heatMapItems.Add(item);
             var kpiGroups = result.GroupBy(a => a.KpiName).Select(g => g.FirstOrDefault());
 
             foreach (var kpiGroup in kpiGroups) {
@@ -151,10 +162,6 @@ namespace Vz.MegaHack.Engines
                               where a.KpiName.Equals(kpiGroup.KpiName)
                               group a by a.AgentName into g
                               select g.OrderByDescending(i => i.Date).FirstOrDefault();
-
-                var item = new Dictionary<string, string>();
-                item.Add("..Category", kpiGroup.Category);
-                item.Add(".Behavior Attribute", kpiGroup.KpiName);
 
                 var centerResult = from ak in agentKpis
                               join ca in centerAgents on ak.AgentId equals ca.AgentId
@@ -170,6 +177,12 @@ namespace Vz.MegaHack.Engines
                 foreach (var row in sdResult) {
                     sdList.Add(row.KpiValue);
                 }
+
+                //Second + rows have values
+                item = new Dictionary<string, string>();
+                
+                item.Add("..Category", kpiGroup.Category);
+                item.Add(".Behavior Attribute", kpiGroup.KpiName);
 
                 double centerAverage = Convert.ToInt32(centerResult.First().CenterAverage);
                 item.Add(".Center Average", centerAverage.ToString("F"));
