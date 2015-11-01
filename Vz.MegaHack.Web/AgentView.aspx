@@ -194,7 +194,7 @@
                     name: 'Center Average',
                     id: 'revenue',
                     type: 'area',
-                    data: [<%= kpiScores[0].ToString()%>],
+                    data: [<%= centerAverage[0].ToString()%>],
                     tooltip: {
                         headerFormat: '<span style="font-size: 11px;color:#666">{point.x:%B %e, %Y}</span><br>',
                         valueSuffix: ' %'
@@ -211,7 +211,7 @@
                         //pointFormat: '{point.name}<br><b>{point.y}</b>',
                         valueSuffix: ' %'
                     },
-                    data: [<%= centerAverage[0].ToString()%>]
+                    data: [<%= kpiScores[0].ToString()%>]
 
                 }]
             };
@@ -251,7 +251,7 @@
                     name: 'Center Average',
                     id: 'revenue',
                     type: 'area',
-                    data: [<%= kpiScores[1].ToString()%>],
+                    data: [<%= centerAverage[1].ToString()%>],
                     tooltip: {
                         headerFormat: '<span style="font-size: 11px;color:#666">{point.x:%B %e, %Y}</span><br>',
                         valueSuffix: ' %'
@@ -268,7 +268,7 @@
                         //pointFormat: '{point.name}<br><b>{point.y}</b>',
                         valueSuffix: ' %'
                     },
-                    data: [<%= centerAverage[1].ToString()%>]
+                    data: [<%= kpiScores[1].ToString()%>]
 
                 }]
             };
@@ -308,7 +308,7 @@
                     name: 'Center Average',
                     id: 'revenue',
                     type: 'area',
-                    data: [<%= kpiScores[2].ToString()%>],
+                    data: [<%= centerAverage[2].ToString()%>],
                     tooltip: {
                         headerFormat: '<span style="font-size: 11px;color:#666">{point.x:%B %e, %Y}</span><br>',
                         valueSuffix: ' %'
@@ -325,7 +325,7 @@
                         //pointFormat: '{point.name}<br><b>{point.y}</b>',
                         valueSuffix: ' %'
                     },
-                    data: [<%= centerAverage[2].ToString()%>]
+                    data: [<%= kpiScores[2].ToString()%>]
 
                 }]
             };
@@ -365,7 +365,7 @@
                     name: 'Center Average',
                     id: 'revenue',
                     type: 'area',
-                    data: [<%= kpiScores[3].ToString()%>],
+                    data: [<%= centerAverage[3].ToString()%>],
                     tooltip: {
                         headerFormat: '<span style="font-size: 11px;color:#666">{point.x:%B %e, %Y}</span><br>',
                         valueSuffix: ' %'
@@ -382,7 +382,7 @@
                         //pointFormat: '{point.name}<br><b>{point.y}</b>',
                         valueSuffix: ' %'
                     },
-                    data: [<%= centerAverage[3].ToString()%>]
+                    data: [<%= kpiScores[3].ToString()%>]
 
                 }]
             };
