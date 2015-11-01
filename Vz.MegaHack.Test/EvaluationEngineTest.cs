@@ -20,7 +20,7 @@ namespace Vz.MegaHack.Test
             PathManager.Initialize(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data"));
             int intLeaderBoardCount = 0;
             intLeaderBoardCount = EvaluationEngine.GetLeaderBoard("001").LeaderBoard.Count;
-            Assert.LessOrEqual(12, intLeaderBoardCount);
+            Assert.LessOrEqual(10, intLeaderBoardCount);
         }
     }
 }
