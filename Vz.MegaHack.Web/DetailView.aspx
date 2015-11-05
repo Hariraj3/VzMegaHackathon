@@ -16,7 +16,7 @@
             <div style="float: right">
                 <a style="cursor:pointer; color: darkblue; text-decoration-line: underline" onclick="goback()">Back</a>
             </div>
-                <div id="divOutput"></div>
+                <div id="divOutput" style="margin-top: -37px;"></div>
                 <%--<table id="tableOutput2" class="table table-header-rotated" style="margin: 57px auto 0px auto;">
                     <thead>
                     <tr>
@@ -254,9 +254,9 @@
         }
 
             .csstransforms .table-header-rotated th.rotate > div {
-                -webkit-transform: translate(25px, 51px) rotate(315deg);
-                -ms-transform: translate(25px, 51px) rotate(315deg);
-                transform: translate(25px, 51px) rotate(315deg);
+                -webkit-transform: translate(33px, 51px) rotate(315deg);
+                -ms-transform: translate(33px, 51px) rotate(315deg);
+                transform: translate(33px, 51px) rotate(315deg);
                 width: 30px;
             }
 
@@ -275,64 +275,7 @@
 <link href="Content/Styles/jquery-ui-slider-pips.css" rel="stylesheet" />
         <style>
 
-        #rainbow-slider {
-            background: linear-gradient(to right, #00FF00 0,#FFFFFF 50%, #ff0000 100%) no-repeat;
-            background-size: cover;
-            border-radius: 30px;
-            border: none;
-            box-shadow: inset 0 0 0 1px rgba(0,0,0,.18);
-            height: 10px;
-        }
-
-            #rainbow-slider.ui-slider-horizontal .ui-slider-range {
-                background: transparent;
-            }
-
-            #rainbow-slider .ui-slider-handle {
-                background: rgba(255, 255, 255, 0.21);
-                border-color: rgba(0, 0, 0, 0.56);
-                box-shadow: inset 0 0 2px 2px rgba(255, 255, 255, 0.89);
-                border-radius: 20px;
-                top: -8px;
-            }
-
-                #rainbow-slider .ui-slider-handle.ui-state-hover,
-                #rainbow-slider .ui-slider-handle:hover,
-                #rainbow-slider .ui-slider-handle.ui-state-focus,
-                #rainbow-slider .ui-slider-handle:focus,
-                #rainbow-slider .ui-slider-handle.ui-state-active {
-                    background: rgba(255, 255, 255, 0.21);
-                }
-
-            #rainbow-slider .ui-slider-pip .ui-slider-label {
-                width: 6em;
-                margin-left: -3em;
-            }
-
-        #rainbow1-slider.ui-slider .ui-slider-range {
-            background: linear-gradient(to right, #00FF00 0,#FFFFFF 50%, #ff0000 100%) no-repeat;
-            border: 1px solid rgba(67, 77, 90, 0.5);
-            top: -1px;
-            transition: all 0.2s ease-out;
-        }
-
-        #rainbow-slider .ui-slider-pip .ui-slider-label {
-            color: #000000;
-        }
-
-
-        #rainbow-slider .ui-slider-pip .ui-slider-line {
-            top: 1px;
-        }
-
-        #rainbow-slider .ui-slider-pip:nth-of-type(odd) {
-            top: auto;
-            bottom: 32px;
-        }
-
-            #rainbow-slider .ui-slider-pip:nth-of-type(odd) .ui-slider-line {
-                top: 21px;
-            }
+        
 
         #scale-slider.ui-slider {
             border-radius: 0px;
@@ -435,7 +378,7 @@
 
 
     </style>
-<script src="Content/Scripts/Libs/jquery-ui.js"></script>
+    <script src="Content/Scripts/Libs/jquery-ui.js"></script>
     <script src="Content/Scripts/Libs/jquery-ui-slider-pips.js"></script>
     <script type="text/javascript">
         function Navigate2Agent(agentid) {
@@ -443,32 +386,7 @@
         }
 
         var timeoutVar = null;
-        $(function () {
-
-            $("#rainbow-slider ")
-				.slider({
-				    min: -3,
-				    max: 3,
-				    range: true,
-				    step: 0.5,
-				    values: [-3, 3],
-				    slide: function (event, ui) {
-				        console.log(ui.values);
-				    },
-				    change: function (event, ui) {
-				        console.log("stop=" + ui.value);
-				        clearTimeout(timeoutVar);
-				        timeoutVar = setTimeout(function () {
-				            recalculateWithSD(ui.values[0], ui.values[1]);
-				        }, 100);
-				    }
-				}).slider("pips", {
-				    rest: "label"
-				});
-            setTimeout(function () {
-                recalculateWithSD(-3, 3);
-            }, 200);
-        });
+        
         function outputUpdate(vol) {
             document.querySelector('#tolerenceOutput').value = vol;
             clearTimeout(timeoutVar);
@@ -476,8 +394,9 @@
                 recalculateWithSD(vol);
             }, 100);
         }
+
+
         function rgb(p, color) {
-            //console.log("p=>" + p);
             if (color == 'r') {
                 r = 255;
                 g = (1 - p) * 255;
@@ -496,15 +415,26 @@
                 var $row = $(this);
                 var avg = parseFloat($row.find("td.avg").text());
                 var sd = parseFloat($row.attr("data-sd")).toFixed(2);
+                var mode = $row.attr("data-mode");
+                console.log(mode);
                 $row.children("td.val").each(function () {
                     var v = parseFloat($(this).text());
                     var zscore = (v - avg) / sd;
                     if (zscore > min && zscore < max) {
-                        console.log("zscore=" + zscore);
-                        if (zscore <= 0) {
-                            $(this).css("background", rgb(((-1) * zscore / 3), "g"));
-                        } else {
-                            $(this).css("background", rgb((zscore / 3), "r"));
+                        //console.log("zscore=" + zscore);
+                        if (mode == "N") {
+                            if (zscore <= 0) {
+                                $(this).css("background", rgb(((-1) * zscore / 3), "r"));
+                            } else {
+                                $(this).css("background", rgb((zscore / 3), "g"));
+                            }
+                        }
+                        else {
+                            if (zscore <= 0) {
+                                $(this).css("background", rgb(((-1) * zscore / 3), "g"));
+                            } else {
+                                $(this).css("background", rgb((zscore / 3), "r"));
+                            }
                         }
                     } else {
                         $(this).css("background-color", "#000");
@@ -575,7 +505,7 @@
                     var tblVal = "";
                     //Table Tag
                     //$('#divOutput').append("<table id='tableOutput' class='table table-header-rotated' style='margin: 57px auto 0px auto;'><thead><tr><th></th><th>Behaviour Attribute</th>");
-                    tblVal = "<table id='tableOutput' class='table table-header-rotated' style='margin: 57px auto 0px auto;'><thead><tr><th></th><th>Behaviour Attribute</th>";
+                    tblVal = "<table id='tableOutput' class='table table-header-rotated' style='margin: 57px auto 0px auto;'><thead><tr><th></th><th style='border-bottom: thin; border-bottom-color: #ccc; border-bottom-style: solid; vertical-align: bottom'>Behaviour Attribute</th>";
                     //Table Header
                     for (var i in Result.d.HeatMapView[1]) {
                         if ((i == ".Standard Deviation") || (i == ".Behavior Attribute") || (i == "..Category")) {
@@ -600,11 +530,11 @@
                     var callAttr = "";
                     for (var ctr = 1; ctr < hmlength; ctr++) {
                         //$('#divOutput').append("<tr class='attr' data-sd='" + Result.d.HeatMapView[ctr]['.Standard Deviation'] + "'>");
-                        tblVal += "<tr class='attr' data-sd='" + Result.d.HeatMapView[ctr]['.Standard Deviation'] + "'>";
+                        tblVal += "<tr class='attr' data-mode='P' data-sd='" + Result.d.HeatMapView[ctr]['.Standard Deviation'] + "'>";
                         if (callAttr != Result.d.HeatMapView[ctr]['..Category']) {
                             if (Result.d.HeatMapView[ctr]['..Category'] == "Call Attributes") {
                                 //$('#divOutput').append("<th class='row-header' rowspan='7'>Call Attributes</th>");
-                                tblVal += "<th class='row-header' rowspan='7'>Call Attributes</th>";
+                                tblVal += "<th class='row-header' rowspan='7' style='border-top: thin; border-top-color: #ccc; border-top-style: solid'>Call Attributes</th>";
                             }
                             else if (Result.d.HeatMapView[ctr]['..Category'] == "Speech Analytics") {
                                 //$('#divOutput').append("<th class='row-header' rowspan='2'>Speech Analytics</th>");
@@ -660,3 +590,4 @@
         });
 
     </script>
+
