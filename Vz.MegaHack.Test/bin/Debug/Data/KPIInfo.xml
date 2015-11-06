@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <KPIs>
-  <KPI id="001" name="Total Calls" category="Call Attributes"/>
-  <KPI id="002" name="# Hold in Call > 2" category="Call Attributes"/>
-  <KPI id="003" name="ACS Rating &lt; 5" category="Call Attributes"/>
-  <KPI id="004" name="Chat Initiated" category="Call Attributes"/>
-  <KPI id="005" name="Crosstalk time > 0 mins" category="Call Attributes"/>
-  <KPI id="006" name="Hold Duration > 3 mins" category="Call Attributes"/>
-  <KPI id="007" name="Silent time > 3 mins" category="Call Attributes"/>
-  <KPI id="008" name="Escalate to Supervisor" category="Speech Analytics"/>
-  <KPI id="009" name="Negative Attitude" category="Speech Analytics"/>
-  <KPI id="010" name="Adjusted Calls Per Hour" category="Metrics"/>
-  <KPI id="011" name="All In Save Rate" category="Metrics"/>
-  <KPI id="012" name="Average Handling Time" category="Metrics"/>
-  <KPI id="013" name="Entire Rep Performance" category="Metrics"/>
-  <KPI id="014" name="FiOS Internet Gross Close Rate" category="Metrics"/>
-  <KPI id="015" name="FiOS TV Gross Close Rate" category="Metrics"/>
-  <KPI id="016" name="FiOS TV Stick Rate" category="Metrics"/>
-  <KPI id="017" name="First Call Resolution" category="Metrics"/>
-  <KPI id="018" name="HSI Gross Close Rate" category="Metrics"/>
+  <KPI id="001" name="Total Calls" mode="p" category="Call Attributes"/>
+  <KPI id="002" name="# Hold in Call > 2" mode="n" category="Call Attributes"/>
+  <KPI id="003" name="ACS Rating &lt; 5" mode="n" category="Call Attributes"/>
+  <KPI id="004" name="Chat Initiated" mode="n" category="Call Attributes"/>
+  <KPI id="005" name="Crosstalk time > 0 mins" mode="n" category="Call Attributes"/>
+  <KPI id="006" name="Hold Duration > 3 mins" mode="n" category="Call Attributes"/>
+  <KPI id="007" name="Silent time > 3 mins" mode="n" category="Call Attributes"/>
+  <KPI id="008" name="Escalate to Supervisor" mode="n" category="Speech Analytics"/>
+  <KPI id="009" name="Negative Attitude" mode="n" category="Speech Analytics"/>
+  <KPI id="010" name="Adjusted Calls Per Hour" mode="p" category="Metrics"/>
+  <KPI id="011" name="All In Save Rate" mode="p" category="Metrics"/>
+  <KPI id="012" name="Average Handling Time" mode="n" category="Metrics"/>
+  <KPI id="013" name="Entire Rep Performance" mode="p" category="Metrics"/>
+  <KPI id="014" name="FiOS Internet Gross Close Rate" mode="p" category="Metrics"/>
+  <KPI id="015" name="FiOS TV Gross Close Rate" mode="p" category="Metrics"/>
+  <KPI id="016" name="FiOS TV Stick Rate" mode="p" category="Metrics"/>
+  <KPI id="017" name="First Call Resolution" mode="p" category="Metrics"/>
+  <KPI id="018" name="HSI Gross Close Rate" mode="p" category="Metrics"/>
 </KPIs>

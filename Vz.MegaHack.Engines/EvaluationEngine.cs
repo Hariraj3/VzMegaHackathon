@@ -139,7 +139,7 @@ namespace Vz.MegaHack.Engines
                          join ak in agentKpis on k.KpiId equals ak.KpiId
                          join a in supervisorAgents on ak.AgentId equals a.AgentId
                          orderby k.Category, k.KpiId, a.AgentName
-                         select new { a.AgentId, a.AgentName, a.Date, k.KpiId, k.KpiName, ak.KpiValue, k.Category };
+                         select new { a.AgentId, a.AgentName, a.Date, k.KpiId, k.KpiName, k.Mode, ak.KpiValue, k.Category };
 
             //First row has Agent IDs
             var firstItem = new Dictionary<string, string>();
@@ -148,6 +148,7 @@ namespace Vz.MegaHack.Engines
             firstItem.Add(".Behavior Attribute", "");
             firstItem.Add(".Center Average", "");
             firstItem.Add(".Standard Deviation", "");
+            firstItem.Add(".Mode", "");
 
             foreach (var row in supervisorAgents) {
                 firstItem.Add(row.AgentName, row.AgentId);
@@ -190,6 +191,8 @@ namespace Vz.MegaHack.Engines
 
                 double standardDeviation = StatisticsHelper.GetStandardDeviation(sdList);
                 item.Add(".Standard Deviation", standardDeviation.ToString("F"));
+
+                item.Add(".Mode", kpiGroup.Mode);
 
                 foreach (var row in supervisorAgents) {
                     item.Add(row.AgentName, "");

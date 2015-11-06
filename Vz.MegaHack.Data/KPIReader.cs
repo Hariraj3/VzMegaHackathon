@@ -25,6 +25,7 @@ namespace Vz.MegaHack.Data
                 elements.Add(new KPIInfo() {
                     KpiId = Convert.ToString(item.Attribute("id").Value),
                     KpiName = Convert.ToString(item.Attribute("name").Value),
+                    Mode = Convert.ToString(item.Attribute("mode").Value),
                     Category = Convert.ToString(item.Attribute("category").Value)
                 });
             }
@@ -43,6 +44,7 @@ namespace Vz.MegaHack.Data
                 elements.Add(new KPIInfo() {
                     KpiId = Convert.ToString(item.Attribute("id").Value),
                     KpiName = Convert.ToString(item.Attribute("name").Value),
+                    Mode = Convert.ToString(item.Attribute("mode").Value),
                     Category = Convert.ToString(item.Attribute("category").Value)
                 });
             }
