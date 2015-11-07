@@ -77,7 +77,7 @@ namespace Vz.MegaHack.Data
             }
 
             var latestElements = from e in elements
-                                 group e by e.Date into g
+                                 group e by new { e.AgentId, e.KpiId, e.Date } into g
                                  select g.OrderByDescending(i => i.Date).FirstOrDefault();
 
             return latestElements.ToList();
