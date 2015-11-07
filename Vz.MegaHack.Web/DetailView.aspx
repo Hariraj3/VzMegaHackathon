@@ -508,7 +508,7 @@
                     tblVal = "<table id='tableOutput' class='table table-header-rotated' style='margin: 57px auto 0px auto;'><thead><tr><th></th><th style='border-bottom: thin; border-bottom-color: #ccc; border-bottom-style: solid; vertical-align: bottom'>Behaviour Attribute</th>";
                     //Table Header
                     for (var i in Result.d.HeatMapView[1]) {
-                        if ((i == ".Standard Deviation") || (i == ".Behavior Attribute") || (i == "..Category")) {
+                        if ((i == ".Standard Deviation") || (i == ".Behavior Attribute") || (i == "..Category") || (i == ".Mode")) {
                             continue;
                         }
                         else if (i == ".Center Average")
@@ -530,7 +530,7 @@
                     var callAttr = "";
                     for (var ctr = 1; ctr < hmlength; ctr++) {
                         //$('#divOutput').append("<tr class='attr' data-sd='" + Result.d.HeatMapView[ctr]['.Standard Deviation'] + "'>");
-                        tblVal += "<tr class='attr' data-mode='P' data-sd='" + Result.d.HeatMapView[ctr]['.Standard Deviation'] + "'>";
+                        tblVal += "<tr class='attr' data-mode='" + Result.d.HeatMapView[ctr]['.Mode'] + "' data-sd='" + Result.d.HeatMapView[ctr]['.Standard Deviation'] + "'>";
                         if (callAttr != Result.d.HeatMapView[ctr]['..Category']) {
                             if (Result.d.HeatMapView[ctr]['..Category'] == "Call Attributes") {
                                 //$('#divOutput').append("<th class='row-header' rowspan='7'>Call Attributes</th>");
@@ -548,7 +548,7 @@
 
                         for (var i in Result.d.HeatMapView[ctr]) {
                             //Ignore columns
-                            if ((i == ".Standard Deviation") || (i == "..Category")) {
+                            if ((i == ".Standard Deviation") || (i == "..Category") || (i == ".Mode")) {
                                 continue;
                             }
                             else if (i == ".Behavior Attribute") {
