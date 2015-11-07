@@ -422,7 +422,7 @@
                     var zscore = (v - avg) / sd;
                     if (zscore > min && zscore < max) {
                         //console.log("zscore=" + zscore);
-                        if (mode == "N") {
+                        if (mode == "n") {
                             if (zscore <= 0) {
                                 $(this).css("background", rgb(((-1) * zscore / 3), "r"));
                             } else {
