@@ -229,8 +229,25 @@
                 }
                 ]
 
+            }//);
+            , function (chart) {
+
+                var bottom = chart.plotHeight - 20;
+
+                $.each(chart.series[0].data, function (i, data) {
+                    if (data.y > 50) {
+                        data.update({
+                            color: '#50B432'
+                        });
+                    }
+                    else {
+                        data.update({
+                            color: '#ff8a45'
+                        });
+                    }
+                });
+
             });
-            
         }
 
 
