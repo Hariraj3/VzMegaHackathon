@@ -75,7 +75,7 @@ namespace Vz.MegaHack.Engines
 
             return new CenterViewResponse() {
                 CenterName = AgentReader.GetCenterName(centerId),
-                CenterView = centerView
+                CenterView = centerView.OrderByDescending(x => x.Score).ToList()
             };
         }
 
