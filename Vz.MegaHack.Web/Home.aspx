@@ -17,7 +17,7 @@
 </head>
 <body style="background-color: #363636;">
     <form id="form1" runat="server">
-    <div style="text-align: center; color: white; font-size:170px; font-family: 'Bradley Hand ITC';" class="centered">
+    <div style="text-align: center; color: white; font-size:170px; font-family: 'Bradley Hand ITC'; width: 60%" class="centered">
         <div>CO<span style="color:red">Z</span>Y 3.0</div>
     
         <hr style="margin-top: -10px" />
