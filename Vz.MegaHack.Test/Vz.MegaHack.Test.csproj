@@ -86,6 +86,7 @@
     <Content Include="bin\Debug\Vz.MegaHack.Entities.pdb" />
     <Content Include="bin\Debug\Vz.MegaHack.Test.dll" />
     <Content Include="bin\Debug\Vz.MegaHack.Test.pdb" />
+    <Content Include="MainForm.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vz.MegaHack.Core\Vz.MegaHack.Core.csproj">

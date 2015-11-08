@@ -1,0 +1,215 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml.Linq;
+using Vz.MegaHack.Core;
+using Vz.MegaHack.Engines;
+using Vz.MegaHack.Entities;
+
+namespace CCG.WinUI {
+    public partial class MainForm : Form {
+        public MainForm() {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+            PathManager.Initialize(@"C:\Users\v762118\Source\Repos\VzMegaHackathon\Vz.MegaHack.Web\Content\Data");
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e) {
+            LeaderBoardResponse response = EvaluationEngine.GetLeaderBoard("001");
+            List<LeaderBoardItem> leaderBoard = response.LeaderBoard;
+
+            textBox1.Clear();
+            textBox1.AppendText(string.Format("Center:{0}", response.CenterName));
+            textBox1.AppendText(Environment.NewLine);
+
+            foreach (LeaderBoardItem item in leaderBoard) {
+                textBox1.AppendText(item.ToString());
+                textBox1.AppendText(Environment.NewLine);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            SupervisorViewResponse response = EvaluationEngine.GetSupervisorView("001");
+            List<KPIItem> kpiItems = response.SupervisorView;
+
+            textBox1.Clear();
+            textBox1.AppendText(string.Format("Supervisor:{0}", response.SupervisorName));
+            textBox1.AppendText(Environment.NewLine);
+
+            foreach (KPIItem item in kpiItems) {
+                textBox1.AppendText(item.ToString());
+                textBox1.AppendText(Environment.NewLine);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+            CenterViewResponse response = EvaluationEngine.GetCenterView("001");
+            List<KPIItem> kpiItems = response.CenterView;
+
+            textBox1.Clear();
+            textBox1.AppendText(string.Format("Center:{0}", response.CenterName));
+            textBox1.AppendText(Environment.NewLine);
+
+            foreach (KPIItem item in kpiItems) {
+                textBox1.AppendText(item.ToString());
+                textBox1.AppendText(Environment.NewLine);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e) {
+            HeatMapViewResponse response = EvaluationEngine.GetHeatMapView("001");
+            var items = response.HeatMapView;
+
+            textBox1.Clear();
+            textBox1.AppendText(string.Format("Supervisor:{0}", response.SupervisorName));
+            textBox1.AppendText(Environment.NewLine);
+
+            foreach (var item in items) {
+                foreach (var element in item) {
+                    textBox1.AppendText(string.Format("{0}={1}; ", element.Key, element.Value));
+                }
+                textBox1.AppendText(Environment.NewLine);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e) {
+            AgentViewResponse response = EvaluationEngine.GetAgentView("001");
+            List<AgentKPIScore> items = response.AgentView;
+
+            textBox1.Clear();
+            textBox1.AppendText(string.Format("Agent:{0}", response.AgentName));
+            textBox1.AppendText(Environment.NewLine);
+
+            foreach (AgentKPIScore item in items) {
+                textBox1.AppendText(item.ToString());
+                textBox1.AppendText(Environment.NewLine);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e) {
+            string fileName = Path.Combine(PathManager.DataPath, "AgentInfo.xml");
+            string namesFile = Path.Combine(PathManager.DataPath, "Names.txt");
+            string[] names = File.ReadAllLines(namesFile);
+
+            XDocument doc = XDocument.Load(fileName);
+
+            var items = doc.Root.Elements("Agent");
+            Random rnd = new Random(Int32.MaxValue);
+            Random rnd2 = new Random(Int32.MaxValue / 4);
+
+            int nameIndex = 0;
+            int imageIndex = 0;
+
+            foreach (var item in items) {
+                item.Attribute("name").Value = names[nameIndex].Trim();
+                item.Attribute("points").Value = rnd.Next(0, 1000).ToString();
+
+                if (nameIndex < 40) {
+                    imageIndex = rnd2.Next(1, 6);
+                } else {
+                    imageIndex = rnd2.Next(7, 10);
+                }
+
+                item.Attribute("photoFileName").Value = string.Format("agent{0}.jpg", imageIndex);
+                nameIndex++;
+            }
+
+            doc.Save(fileName);
+        }
+
+        private void button5_Click(object sender, EventArgs e) {
+            string fileName = Path.Combine(PathManager.DataPath, "AgentKPI.xml");
+            if (File.Exists(fileName)) {
+                File.Delete(fileName);
+            }
+
+            XDocument doc = new XDocument(new XElement("Agents"));
+
+            Random rndKpiValue = new Random(Int32.MaxValue);
+            Random rndDate = new Random(4236486);
+            Random rndTraining = new Random(303434);
+            Random rndAward = new Random(72104630);
+            DateTime refDate = new DateTime(2015, 1, 1);
+            int kpiValue = 0;
+            bool hadTraining = false;
+            bool isAwarded = false;
+            string description = string.Empty;
+
+            for (int agent = 1; agent <= 80; agent++) {
+                for (int kpi = 1; kpi <= 18; kpi++) {
+                    bool alreadyTrained = false;
+                    bool alreadyAwarded = false;
+                    int prevKpi = 0;
+
+                    for (int m = 2; m <= 7; m++) {
+
+                        XElement element = new XElement("Agent");
+
+                        if (kpi >= 10 && kpi <= 13) {
+                            if ((agent >= 21 && agent <= 25) || (agent >= 31 && agent <= 35)) {
+                                kpiValue = rndKpiValue.Next(10, 50);
+                            } else {
+                                kpiValue = rndKpiValue.Next(50, 95);
+                            }
+                        } else {
+                            if ((agent >= 21 && agent <= 25) || (agent >= 31 && agent <= 35)) {
+                                kpiValue = rndKpiValue.Next(10, 60);
+                            } else {
+                                kpiValue = rndKpiValue.Next(20, 95);
+                            }
+                        }
+
+                        hadTraining = alreadyTrained || kpiValue > 60 || m == 2 || prevKpi > kpiValue ? false : (rndTraining.Next(1, 100) % 2 == 0);
+                        if (m == 5 && !hadTraining) {
+                            hadTraining = true;
+                        }
+                        if (hadTraining) {
+                            alreadyTrained = true;
+                        }
+
+                        isAwarded = alreadyAwarded || prevKpi > kpiValue || kpiValue < 60 ? false : (alreadyTrained ? (rndAward.Next(1, 100) % 2 == 0) : false);
+                        if (!alreadyAwarded && !isAwarded && m == 6 && kpiValue > 60) {
+                            isAwarded = true;
+                        }
+                        if (isAwarded) {
+                            alreadyAwarded = true;
+                        }
+
+                        description = string.Empty;
+                        if (hadTraining) {
+                            description += string.Format("Training {0} attended. ", rndTraining.Next(1, 100));
+                        }
+                        if (isAwarded) {
+                            description += string.Format("Award {0} presented.", rndAward.Next(1, 100));
+                        }
+
+                        prevKpi = kpiValue;
+
+                        element.SetAttributeValue("id", agent.ToString("D3"));
+                        element.SetAttributeValue("kpiId", kpi.ToString("D3"));
+                        element.SetAttributeValue("date", (new DateTime(2015, m, 1).ToString("yyyy/MM/dd")));
+                        element.SetAttributeValue("kpiValue", kpiValue.ToString());
+                        element.SetAttributeValue("hadTraining", hadTraining.ToString());
+                        element.SetAttributeValue("isAwarded", isAwarded.ToString());
+                        element.SetAttributeValue("description", description);
+
+                        doc.Root.Add(element);
+                    }
+                }
+            }
+
+            doc.Save(fileName);
+        }
+
+    }
+}
