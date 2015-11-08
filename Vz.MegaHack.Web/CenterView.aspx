@@ -345,7 +345,7 @@
     </div>
     <div class="ui-layout-north topheader">
         Cozy 3.0 - Call Center Workforce Optimization
-        <div style="float:right; color: yellow" id="divCenter">CSSC</div>
+        <div style="float:right; color: yellow" id="divCenter"></div>
         <div style="float:right">Center Name: &nbsp;&nbsp; </div>
     </div>
     
